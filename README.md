@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+# React Question Survey App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## Available Scripts
+This project was created for Populix Front-End entry test.
 
-In the project directory, you can run:
+![app-preview](preview.png)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+What things you need to install the software and how to install them
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Yarn (Package Manager)](https://yarnpkg.com)
 
-### `npm run build`
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Clone the repository via http or ssh
+
+```
+git clone https://github.com/RadiRS/react-question-survey.git your_app_name
+```
+
+```
+git clone git@github.com:RadiRS/react-question-survey.git your_app_name
+```
+
+Enter into project directory and install all dependencies
+
+```
+cd your_app_name && yarn
+```
+
+Run the project via command line
+
+```
+yarn start
+```
+
+<p>&nbsp;</p>
+
+## Running the tests
+
+### Break down into end to end tests
+
+Unit Tests and Component Test with Jest.
+
+For testing just run script command
+
+```
+yarn test
+```
+
+<p>&nbsp;</p>
+
+## Deployment
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It correctly bundles React in production mode and optimizes the build for the best performance
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+yarn build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p>&nbsp;</p>
 
-### `npm run eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [ReactJS](https://facebook.github.io/react-native/) - The mobile framework used
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p>&nbsp;</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Versioning
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/RadiRS/react-question-surver/tags).
 
-## Learn More
+<p>&nbsp;</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Authors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Radi Rusadi** - _Initial work_ - [RadiRS](https://github.com/RadiRS)
+
+See also the list of [contributors](https://github.com/RadiRS/react-question-surver/contributors) who participated in this project.
