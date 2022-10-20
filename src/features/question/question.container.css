@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid grey;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mb {
+  margin-bottom: 16px;
+}
+
+.mv {
+  margin: 16px 0;
+}
+
+.mr {
+  margin-right: 16px;
+}
