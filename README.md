@@ -5,7 +5,7 @@
 
 This project was created for Populix Front-End entry test.
 
-![app-preview](preview.png)
+![app-preview](preview.gif)
 
 ## Getting Started
 
