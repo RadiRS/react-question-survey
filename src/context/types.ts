@@ -12,6 +12,7 @@ export interface QuestionInterface {
 export type QuestionContextType = {
   questions: QuestionInterface[];
   question: QuestionInterface | null;
+  setQuestions: (questions: QuestionInterface[]) => void;
   setQuestion: (question: QuestionInterface | null) => void;
   addQuestion: (question: QuestionInterface) => void;
   editQuestion: (question: QuestionInterface) => void;

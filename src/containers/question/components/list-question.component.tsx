@@ -1,16 +1,24 @@
+import { useContext } from "react";
 import { Checkbox, IconButton } from "@mui/material";
 import { HighlightOff, EditOutlined } from "@mui/icons-material";
+import {
+  DragDropContext,
+  Droppable,
+  OnDragEndResponder,
+  DropResult,
+} from "react-beautiful-dnd";
 
+import { reorder } from "../../../app/utils";
 import { QuestionContext } from "../../../context/question.context";
 import { QuestionContextType, QuestionInterface } from "../../../context/types";
-import { useContext } from "react";
+import QuestionItem from "./item-question.component";
 
 interface ListQuestionProps {
   setFormVisible: (visible: boolean) => void;
 }
 
 const ListQuestion = ({ setFormVisible }: ListQuestionProps) => {
-  const { questions, setQuestion, removeQuestion } = useContext(
+  const { questions, setQuestions, setQuestion, removeQuestion } = useContext(
     QuestionContext
   ) as QuestionContextType;
 
@@ -19,31 +27,35 @@ const ListQuestion = ({ setFormVisible }: ListQuestionProps) => {
     setFormVisible(true);
   };
 
+  const onDragEnd = ({ destination, source }: DropResult) => {
+    if (!destination) return;
+
+    const newItems = reorder(questions, source.index, destination.index);
+
+    setQuestions(newItems);
+  };
+
   return (
     <div className="mv">
       <h4 className="mb">List Question</h4>
-
-      {questions.map((item, i) => (
-        <div key={`${i}`} className="question">
-          <div className="row">
-            <p>{item.question}</p>
-            <div>
-              <IconButton onClick={() => onPressEdit(item)}>
-                <EditOutlined />
-              </IconButton>
-              <IconButton onClick={() => removeQuestion(item.id)}>
-                <HighlightOff />
-              </IconButton>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="droppable-list">
+          {(provided) => (
+            <div ref={provided.innerRef} {...provided.droppableProps}>
+              {questions.map((item, i) => (
+                <QuestionItem
+                  key={item.id}
+                  item={item}
+                  index={i}
+                  onPressEdit={() => onPressEdit(item)}
+                  onPressRemove={() => removeQuestion(item.id)}
+                />
+              ))}
+              {provided.placeholder}
             </div>
-          </div>
-          {item.options.map((ans) => (
-            <div className="option" key={ans.id}>
-              <Checkbox />
-              <p>{ans.option}</p>
-            </div>
-          ))}
-        </div>
-      ))}
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 };

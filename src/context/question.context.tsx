@@ -55,6 +55,7 @@ const QuestionProvider = ({ children }: QuestionProviderInterface) => {
   const value = {
     questions,
     question,
+    setQuestions,
     setQuestion,
     addQuestion,
     removeQuestion,
