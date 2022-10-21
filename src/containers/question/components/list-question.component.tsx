@@ -1,16 +1,10 @@
 import { useContext } from "react";
-import { Checkbox, IconButton } from "@mui/material";
-import { HighlightOff, EditOutlined } from "@mui/icons-material";
-import {
-  DragDropContext,
-  Droppable,
-  OnDragEndResponder,
-  DropResult,
-} from "react-beautiful-dnd";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 
 import { reorder } from "../../../app/utils";
 import { QuestionContext } from "../../../context/question.context";
 import { QuestionContextType, QuestionInterface } from "../../../context/types";
+
 import QuestionItem from "./item-question.component";
 
 interface ListQuestionProps {

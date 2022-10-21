@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, IconButton, ListItem, ListItemText } from "@mui/material";
+import { Checkbox, IconButton, ListItem } from "@mui/material";
 import { Draggable } from "react-beautiful-dnd";
 
 import { QuestionInterface } from "../../../context";
