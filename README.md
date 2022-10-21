@@ -68,7 +68,9 @@ yarn build
 
 ## Built With
 
-- [ReactJS](https://facebook.github.io/react-native/) - The mobile framework used
+- [ReactJS](https://facebook.github.io/react-native/) - A JavaScript library for building user interfaces
+- [MaterialUI](https://mui.com) - React Component Library
+- [react-beautiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd) - Beautiful and accessible drag and drop for lists
 
 <p>&nbsp;</p>
 
