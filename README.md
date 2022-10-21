@@ -47,10 +47,6 @@ yarn start
 
 ## Running the tests
 
-### Break down into end to end tests
-
-Unit Tests and Component Test with Jest.
-
 For testing just run script command
 
 ```
