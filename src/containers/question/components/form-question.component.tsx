@@ -16,9 +16,10 @@ interface FormQuestionProps {
 }
 
 const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
-  const { addQuestion, question, editQuestion } = useContext(
+  const { addQuestion, question, editQuestion, setQuestion } = useContext(
     QuestionContext
   ) as QuestionContextType;
+
   const [form, setForm] = useState<QuestionInterface>(
     question || {
       id: getUuid(),
@@ -40,6 +41,11 @@ const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
     }, 100);
   };
 
+  const onPressCancel = () => {
+    setQuestion(null);
+    setFormVisible(false);
+  };
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm((prevState) => ({
       ...prevState,
@@ -48,12 +54,6 @@ const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
   };
 
   const onChangeOption = (e: ChangeEvent<HTMLInputElement>) => {
-    // const selectedOption = form.options.filter(
-    //   (opt) => opt.id === e.target.name
-    // )[0];
-
-    // selectedOption.option = e.target.value;
-
     const newForm = {
       ...form,
       options: form.options.map((item) => {
@@ -110,9 +110,6 @@ const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
             id="outlined-basic"
             placeholder={`Option ${i + 1}`}
             className="mb"
-            // onChange={(e) => {
-            //   item.option = e.target.value;
-            // }}
             onChange={onChangeOption}
             value={item.option}
             endAdornment={
@@ -135,6 +132,15 @@ const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
           onClick={onPressAddOption}
         >
           Add Option
+        </Button>
+        <Button
+          variant="outlined"
+          size="large"
+          color="error"
+          style={{ marginRight: 16 }}
+          onClick={onPressCancel}
+        >
+          Cancel
         </Button>
         <Button
           variant="outlined"
