@@ -78,7 +78,7 @@ yarn build
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/RadiRS/react-question-surver/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/RadiRS/react-question-survey/tags).
 
 <p>&nbsp;</p>
 
@@ -86,4 +86,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 - **Radi Rusadi** - _Initial work_ - [RadiRS](https://github.com/RadiRS)
 
-See also the list of [contributors](https://github.com/RadiRS/react-question-surver/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/RadiRS/react-question-survey/contributors) who participated in this project.
