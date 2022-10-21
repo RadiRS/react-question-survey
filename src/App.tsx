@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { QuestionContainer } from "./features";
+import { QuestionContainer } from "./containers";
 
 function App() {
   return (

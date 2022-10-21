@@ -6,7 +6,7 @@ import {
 } from "@mui/icons-material";
 
 import "./question.container.css";
-import { ListQuestion, FormQuestion } from "../../components";
+import { ListQuestion, FormQuestion } from "./components";
 
 const QuestionContainer = () => {
   const [formVisible, setFormVisible] = useState(false);
@@ -23,7 +23,11 @@ const QuestionContainer = () => {
           )}
         </IconButton>
       </div>
-      {formVisible ? <FormQuestion /> : <ListQuestion />}
+      {formVisible ? (
+        <FormQuestion setFormVisible={setFormVisible} />
+      ) : (
+        <ListQuestion />
+      )}
     </div>
   );
 };
