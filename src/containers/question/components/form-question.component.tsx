@@ -5,40 +5,35 @@ import {
   InputAdornment,
   OutlinedInput,
 } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 
 import { getUuid } from "../../../app/utils";
-import { useQuestion } from "../useQuestion";
-
-interface OptionInterface {
-  id: string;
-  option: string;
-}
-
-interface FormInterface {
-  id: string;
-  question: string;
-  options: OptionInterface[];
-}
+import { QuestionInterface, QuestionContextType } from "../../../context/types";
+import { QuestionContext } from "../../../context/question.context";
 
 interface FormQuestionProps {
   setFormVisible: (visible: boolean) => void;
 }
 
 const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
-  const { addQuestion } = useQuestion();
-  const [form, setForm] = useState<FormInterface>({
-    id: getUuid(),
-    question: "",
-    options: [{ id: getUuid(), option: "" }],
-  });
+  const { addQuestion, question, editQuestion } = useContext(
+    QuestionContext
+  ) as QuestionContextType;
+  const [form, setForm] = useState<QuestionInterface>(
+    question || {
+      id: getUuid(),
+      question: "",
+      options: [{ id: getUuid(), option: "" }],
+    }
+  );
 
   const onPressSubmit = () => {
     const canSave = !!form.question && form.options.every((v) => !!v.option);
 
     if (!canSave) return;
 
-    addQuestion(form);
+    if (!question) addQuestion(form);
+    else editQuestion(form);
 
     setTimeout(() => {
       setFormVisible(false);
@@ -53,11 +48,25 @@ const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
   };
 
   const onChangeOption = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedOption = form.options.filter(
-      (opt) => opt.id === e.target.name
-    )[0];
+    // const selectedOption = form.options.filter(
+    //   (opt) => opt.id === e.target.name
+    // )[0];
 
-    selectedOption.option = e.target.value;
+    // selectedOption.option = e.target.value;
+
+    const newForm = {
+      ...form,
+      options: form.options.map((item) => {
+        if (item.id !== e.target.name) return item;
+
+        return {
+          ...item,
+          option: e.target.value,
+        };
+      }),
+    };
+
+    setForm(newForm);
   };
 
   const onPressAddOption = () => {
@@ -90,6 +99,7 @@ const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
         id="outlined-basic"
         placeholder="Question"
         className="mb"
+        value={form.question}
         onChange={onChange}
       />
       {form.options.map((item, i) => (
@@ -100,7 +110,11 @@ const FormQuestion = ({ setFormVisible }: FormQuestionProps) => {
             id="outlined-basic"
             placeholder={`Option ${i + 1}`}
             className="mb"
+            // onChange={(e) => {
+            //   item.option = e.target.value;
+            // }}
             onChange={onChangeOption}
+            value={item.option}
             endAdornment={
               form.options.length > 1 && (
                 <InputAdornment position="end">

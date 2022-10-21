@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import { QuestionContextType, QuestionInterface } from "./types";
 
-interface OptionInterface {
-  id: string;
-  option: string;
+export const QuestionContext = createContext<QuestionContextType | null>(null);
+
+interface QuestionProviderInterface {
+  children: React.ReactNode;
 }
 
-interface QuestionInterface {
-  id: string;
-  question: string;
-  options: OptionInterface[];
-}
-
-export const useQuestion = () => {
+const QuestionProvider = ({ children }: QuestionProviderInterface) => {
   const [questions, setQuestions] = useState<QuestionInterface[]>([]);
+  const [question, setQuestion] = useState<QuestionInterface | null>(null);
 
   useEffect(() => {
     const data = localStorage.getItem("questions");
@@ -36,6 +33,7 @@ export const useQuestion = () => {
 
   const removeQuestion = (id: string) => {
     const newQuestions = questions.filter((item) => item.id !== id);
+
     if (!newQuestions.length) {
       const data = JSON.stringify(newQuestions);
       localStorage.setItem("questions", data);
@@ -54,10 +52,20 @@ export const useQuestion = () => {
     setQuestions(newQuestions);
   };
 
-  return {
+  const value = {
     questions,
+    question,
+    setQuestion,
     addQuestion,
     removeQuestion,
     editQuestion,
   };
+
+  return (
+    <QuestionContext.Provider value={value}>
+      {children}
+    </QuestionContext.Provider>
+  );
 };
+
+export default QuestionProvider;
